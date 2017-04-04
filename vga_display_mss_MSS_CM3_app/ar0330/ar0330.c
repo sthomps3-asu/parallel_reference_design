@@ -520,24 +520,46 @@ void parallel_ar0330_1080_720_30fps(uint32_t mode)
 
 void set_frame_length_lines(uint16_t frame_length)
 {
+	// frame_length_lines: the number of row periods per frame.
 	sensor_i2c_write(FRAME_LENGTH_LINES,frame_length);
-}
-
-uint16_t get_frame_length_lines()
-{
-	uint16_t *data;
-	sensor_i2c_read(FRAME_LENGTH_LINES,data);
-	return *data;
 }
 
 void set_line_length_pck(uint16_t line_length)
 {
+	// line_length_pck: The number of clocks required for each sensor row.
 	sensor_i2c_write(LINE_LENGTH_PCK,line_length);
 }
 
-uint16_t get_line_length_pck()
+void set_coarse_integration_time(uint16_t coarse_integration_time)
 {
-	uint16_t *data;
-	status = sensor_i2c_read(LINE_LENGTH_PCK,data);
-	return *data;
+	// coarse_integration_time: number of row periods between a row's reset and a row read.
+	sensor_i2c_write(COARSE_INTEGRATION_TIME,coarse_integration_time);
+}
+
+void set_fine_integration_time(uint16_t fine_integration_time)
+{
+	// fine_integration_time: number of pixel clock periods between the row reset and row read.
+	// NOTE: ON Semi recommends fine_integration_time left at 0.
+	sensor_i2c_write(FINE_INTEGRATION_TIME,fine_integration_time);
+}
+
+// PLL Configuration functions
+void set_vt_pix_clk_div(uint16_t clk_div)
+{
+	sensor_i2c_write(VT_PIX_CLK_DIV, clk_div);
+}
+
+void set_vt_sys_clk_div(uint16_t clk_div)
+{
+	sensor_i2c_write(VT_SYS_CLK_DIV, clk_div);
+}
+
+void set_pre_pll_clk_div(uint16_t clk_div)
+{
+	sensor_i2c_write(PRE_PLL_CLK_DIV, clk_div);
+}
+
+void set_pll_multiplier(uint16_t pll_mult)
+{
+	sensor_i2c_write(PLL_MULTIPLIER, pll_mult);
 }

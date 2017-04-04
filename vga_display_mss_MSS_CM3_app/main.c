@@ -89,11 +89,15 @@ extern void color_mode_select_blue();
 extern void color_mode_bars();
 extern void color_mode_walking1s();
 
-// Dynamic sensor configuration functions.
+// Dynamic sensor configuration functions from ar0330.c
 extern void set_frame_length_lines(uint16_t frame_length);
-extern uint16_t get_frame_length_lines();
 extern void set_line_length_pck(uint16_t line_length);
-extern uint16_t get_line_length_pck();
+extern void set_coarse_integration_time(uint16_t coarse_integration_time);
+extern void set_coarse_integration_time(uint16_t coarse_integration_time);
+extern void set_vt_pix_clk_div(uint16_t clk_div);
+extern void set_vt_sys_clk_div(uint16_t clk_div);
+extern void set_pre_pll_clk_div(uint16_t clk_div);
+extern void set_pll_multiplier(uint16_t pll_mult);
 
 /* This function does audio loop-back from TW->SF2 I2S->TW. The audio is transferred outside TW - to I2S of SF2.
  * This function shall be called after calling TW_Audio_Init() function.
@@ -449,4 +453,3 @@ void USB_rx_handler() {
         data_received = 0;
     }
 }
-
