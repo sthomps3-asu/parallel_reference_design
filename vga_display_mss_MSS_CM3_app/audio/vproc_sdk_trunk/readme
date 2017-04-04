@@ -1,0 +1,39 @@
+This is readme , a first hand document, for Gen SDK describes version information and documentation place holder.
+
+The current Gen SDK is in draft stage. it currently has following sub-directories and files.
+
+->Makefile - Master makefile. before using this set relevant build time environment variables in Makefile.globals
+
+->Makefile.globals - container for all build options. user can make changes here to mention current system configuration.
+
+->config.mk - defines all build options to compile-time variables
+
+->docs - contains documentation on Generic SDK. Refer to Generic_SW_Architecture.docx for SDK hierarchy
+
+->platform directory
+  it further contais:
+	-raspberry pi specific plaform ssl driver. Refer to SSL_Specification.docx for overview on SSL design and usage.
+	-raspberry pi kernel(current tested 2015-02-16-raspbian-wheezy.img, base kernel 3.18.7). Refer to GenSDKBuildHowTo.docx inside platform/raspberry/docs for general setup guideline 
+	 and gen sdk portability on pi
+	-raspberry pi specific platform sound driver to register microsemi vproc device registered as sound card to kernel(compile and boot kernel with microsemi dts file). Refer to GenSDKBuildHowTo.docx for 
+	"Building ALSA on Pi"
+	-dts. required to register microsemi vproc device as sound card device to kernel
+
+5. driver
+	Contains an Generic HBI driver for all microsemi vproc family of devices. Behavior of the driver controlled by setting releavant options in makefile.globals.
+	Refer to HBI_Specification.docx for overview of design and approach
+
+6. lnxdriver
+	Contains HBI driver for linux platform. refer to HBI_Linux_Driver_Specification.docx for overview of its features and usage
+
+7. firmware 
+	Placeholder to keep released firmware images, C-Style files, tools to release
+
+8. tst
+	placeholder for various test apps.
+
+To Remove
+In current SDK version, we have following redundant files  which are to be removed in final release version
+1. env.sh - not required anymore. To be deleted
+2. hbi_test from tst folder. Now we have hbi linux driver to test HBI interfaces. So this is redundant for linux platform. it can be either removed or redisgned for non-os platform
+

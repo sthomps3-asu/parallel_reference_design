@@ -1,0 +1,7 @@
+#ifndef __ZL38051_P130_H_
+#define __ZL38051_P130_H_
+
+extern const buffer[];
+const unsigned int bufferLen ;
+
+#endif
